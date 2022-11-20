@@ -1,13 +1,11 @@
 MaplePackageTools := module()
     option package;
 
-    local mapleInitFile, defaultLibDir, createInitString;
-
-    export removeEntryFromLibname, addPackageDirectoryToLibname, updateLibname, savePackageToMla;
+    local mapleInitFile, defaultLibDir, createInitString, updateLibname;
 
     mapleInitFile := "/Library/Frameworks/Maple.framework/Versions/2022/lib/init":
 
-    removeEntryFromLibname := proc(index)
+    export removeEntryFromLibname := proc(index)
         local libn, newlibnameArr, newLibnameStr:
         libn := libname;
         newlibnameArr := subsop(index=NULL, [libn]):
@@ -15,16 +13,16 @@ MaplePackageTools := module()
         updateLibname(newLibnameStr):
     end;
 
-    createInitString := proc(libnameArr)
-         cat("libname", ":= \"", seq(ListTools:-Join(libnameArr, "\", \"")), "\":")
-    end;
-
-    addPackageDirectoryToLibname := proc(packageDir)
+    export addPathToLibname := proc(path)
         local newLibnameStr, newLibnameArr:
-        newLibnameArr := [packageDir, libname]:
+        newLibnameArr := [path, libname]:
         newLibnameStr := createInitString(newLibnameArr):
         updateLibname(newLibnameStr):
     end:
+
+    createInitString := proc(libnameArr)
+         cat("libname", ":= \"", seq(ListTools:-Join(libnameArr, "\", \"")), "\":")
+    end;
 
     updateLibname := proc(newLibname)
         try 
@@ -48,7 +46,7 @@ MaplePackageTools := module()
         end:
     end:
 
-    savePackageToMla := proc(mlaPath, mplPath, packageName)
+    export savePackageToMla := proc(mlaPath, mplPath, packageName)
 
         read(mplPath);
 
