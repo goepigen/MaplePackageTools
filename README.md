@@ -8,7 +8,7 @@ The Maple initialization file is assumed to exist at _/Library/Frameworks/Maple.
 
 ### addPathToLibname(path)
 
-Overwrites the current Maple initialization file with a string that is composed of the previous items in _libname_ prepended with _path_.
+Overwrites the current Maple initialization file with a command that sets _libname_ to the previous sequence of strings in _libname_ prepended with _path_.
 
 ### savePackageToMla(mlaPath, mplPath, packageName)
 
