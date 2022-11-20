@@ -35,3 +35,17 @@ _libname_ is a sequence of strings. This procedure removes the entry at the i-th
 7. if package code is modified, call _savePackageToMla(mlaPath, mplPath, packageName)_ once again to update the _.mla_ file.
 
 8. if you share your project directory with someone else (or if you clone a repo with an _.mla_ file), call _addPathToLibname(projectDirectory)_ to be able to use the packages in the _.mla_ file.
+
+### Notes
+
+To use this repository for the first time, in a Maple worksheet, add the directory of the repository to libname using the command
+
+`libname := pathToRepoDir, libname;`
+
+At this point you can use the commands from the `MaplePackageTools` package in the current worksheet.
+
+To make this package available aways,
+
+`MaplePackageTools:-addPathToLibname(pathToRepoDir);`
+
+The repository directory is now added to _libname_ in the Maple initialization file.
