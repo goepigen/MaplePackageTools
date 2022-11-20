@@ -36,7 +36,7 @@ _libname_ is a sequence of strings. This procedure removes the entry at the i-th
 
 8. if you share your project directory with someone else (or if you clone a repo with an _.mla_ file), call _addPathToLibname(projectDirectory)_ to be able to use the packages in the _.mla_ file.
 
-### Using This Repository For The First Time
+### Using This Package For The First Time
 
 To use this repository for the first time, in a Maple worksheet, add the directory of the repository to libname using the command
 
