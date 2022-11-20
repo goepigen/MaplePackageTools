@@ -1,4 +1,4 @@
-MyPackageTools := module()
+MaplePackageTools := module()
     option package;
 
     local mapleInitFile, defaultLibDir, createInitString;
@@ -16,7 +16,7 @@ MyPackageTools := module()
     end;
 
     createInitString := proc(libnameArr)
-         cat("libname", ":= \"", seq(ListTools:-Join(libnameArr, "\", \"")), "\", libname:")
+         cat("libname", ":= \"", seq(ListTools:-Join(libnameArr, "\", \"")), "\":")
     end;
 
     addPackageDirectoryToLibname := proc(packageDir)
@@ -28,7 +28,7 @@ MyPackageTools := module()
 
     updateLibname := proc(newLibname)
         try 
-            FileTools:-Text:-Open(mapleInitFile, 'append'):
+            FileTools:-Text:-Open(mapleInitFile, 'overwrite'):
         catch:
             return "Failed to open file":
         end:
