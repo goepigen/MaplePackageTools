@@ -36,7 +36,7 @@ _libname_ is a sequence of strings. This procedure removes the entry at the i-th
 
 8. if you share your project directory with someone else (or if you clone a repo with an _.mla_ file), call _addPathToLibname(projectDirectory)_ to be able to use the packages in the _.mla_ file.
 
-### Notes
+### Using This Repository For The First Time
 
 To use this repository for the first time, in a Maple worksheet, add the directory of the repository to libname using the command
 
@@ -49,3 +49,9 @@ To make this package available aways,
 `MaplePackageTools:-addPathToLibname(pathToRepoDir);`
 
 The repository directory is now added to _libname_ in the Maple initialization file.
+
+### Limitations
+
+This package was developed relatively quickly and did not try to avoid edge cases.
+
+For example, every time you call _addPathToLibname_ you need to execute a _restart_ in a worksheet before you call it again. Otherwise, the change to _init_ from the first call will be overwritten by the change in the second call. The reason is that the second call will prepend _libname_, but _libname_ will still be the version before the first call.
